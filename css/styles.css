@@ -56,6 +56,10 @@ header{
 .content.showing{
     transform: translateY(0%);
 }
+#waveform{
+    width: 100%;
+}
+
 .title{
     font-family: vag-rundschrift-d, sans-serif;
     font-weight: 400;

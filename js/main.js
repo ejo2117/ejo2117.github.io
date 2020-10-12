@@ -28,7 +28,12 @@ function shiftColors(doodle) {
 
     return ([hex1, hex2, hex3])
 }
-
+//audio player
+var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple'
+});
 
 $(() => {
     //hover color shift
@@ -65,19 +70,17 @@ $(() => {
         $(panels[view]).addClass('showing')
     });
 
-    //audio player
-    var wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: 'violet',
-        progressColor: 'purple'
-    });
+
 
     //content loaders
     $('.title').each((i, e) => {
         $(e).on('click', () => {
             let content = $(e).attr('data-content');
             $('.content.' + content).addClass('showing');
-            wavesurfer.load('src/allubaby.wav')
+            wavesurfer.load('src/allubaby.wav');
+            wavesurfer.on('ready', function () {
+                wavesurfer.play();
+            });
 
         })
 
