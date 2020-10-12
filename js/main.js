@@ -30,6 +30,53 @@ function shiftColors(doodle) {
 }
 
 
+//set up audio context
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioContext = new AudioContext();
+let currentBuffer = null;
+
+const visualizeAudio = url => {
+    fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+        .then(audioBuffer => visualizeAudio(audioBuffer));
+}
+
+const filerData = audioBuffer => {
+    const rawData = audioBuffer.getChannelData(0);
+    const samples = 70;
+    const blockSize = Math.floor(rawData.length / samples);
+    const filteredData = [];
+    for (let i = 0; i < samples; i++) {
+        let blockStart = blockSize * i;
+        let sum = 0;
+        for (let j = 0; j < blockSize; j++) {
+            sum = sum + Math.abs(rawData[blockStart + j])
+        }
+        filteredData.push(sum / blockSize)
+
+    }
+    return filteredData;
+
+}
+const normalizeData = filteredData => {
+    const multiplier = Math.pow(Math.max(...filteredData), -1);
+    return filteredData.map(n => n * multiplier);
+
+}
+
+const draw = normalizeData => {
+    //set up canvas
+    const canvas = document.querySelector("canvas");
+    const dpr = window.devicePixelRatio || 1;
+    const padding = 20;
+    canvas.width = canvas.offsetWidth * dpr;
+    canvas.height = (canvas.offsetHeight + padding * 2) * dpr;
+    const ctx = canvas.getContext("2d");
+    ctx.scale(dpr, dpr);
+    ctx.translate(0, canvas.offsetHeight / 2 + padding);
+}
+
 $(() => {
     //hover color shift
     $('.title').each((i, e) => {
@@ -80,6 +127,10 @@ $(() => {
             wavesurfer.load('src/allubaby.wav')
 
         })
+
+    })
+    $('.close').on('click', () => {
+        $('.content.showing').removeClass('showing')
 
     })
 

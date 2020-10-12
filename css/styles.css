@@ -56,6 +56,21 @@ header{
 .content.showing{
     transform: translateY(0%);
 }
+<<<<<<< Updated upstream
+=======
+.close{
+    font-family: vag-rundschrift-d, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 42px;
+    color: red;
+    margin: 20px;
+}
+#waveform{
+    width: 100%;
+}
+
+>>>>>>> Stashed changes
 .title{
     font-family: vag-rundschrift-d, sans-serif;
     font-weight: 400;
