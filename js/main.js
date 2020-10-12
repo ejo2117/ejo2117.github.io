@@ -119,11 +119,24 @@ $(() => {
         progressColor: 'purple'
     });
 
+    var sound = new Howl({
+        src: ['src/allubaby.wav'],
+        autoplay: true,
+        loop: true,
+        volume: 0.5,
+        onend: function () {
+            console.log('Finished!');
+        }
+    });
+
+
+
     //content loaders
     $('.title').each((i, e) => {
         $(e).on('click', () => {
             let content = $(e).attr('data-content');
             $('.content.' + content).addClass('showing');
+            //sound.play();
             // wavesurfer.load('src/allubaby.wav')
 
         })

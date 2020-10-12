@@ -104,11 +104,11 @@
         :container { animation: r 80s linear
         infinite; }
         @place-cell: center;
-        @size: 300% 6vmin;
+        @size: 300% 12vmin;
         transition: @r(.5s) ease;
         background: @pd(#60569e, #e6437d, #ebbf4d);
         transform-origin: 1vmin center;
-        transform: translateX(calc(@i * 2%)) rotate(calc(90deg));
+        transform: translateX(calc(@i * 6%)) rotate(calc(90deg));
         @keyframes r { from{transform:translateX(-100%)}to {
         transform: translateX(100%) } }
       </css-doodle>
@@ -122,6 +122,7 @@
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="https://unpkg.com/wavesurfer.js"></script>
   <script src="js/plugins.js"></script>
+  <script src="js/howler.min.js"></script>
   <script src="js/swiped-events.min.js"></script>
   <script src="js/main.js"></script>
 
