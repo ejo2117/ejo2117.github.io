@@ -124,13 +124,53 @@ $(() => {
         $(e).on('click', () => {
             let content = $(e).attr('data-content');
             $('.content.' + content).addClass('showing');
-            wavesurfer.load('src/allubaby.wav')
+            // wavesurfer.load('src/allubaby.wav')
 
         })
 
     })
     $('.close').on('click', () => {
         $('.content.showing').removeClass('showing')
+
+    })
+
+    //filter controller
+    let slider1 = $('#frequencySlider');
+    let slider2 = $('#octaveSlider');
+    let slider3 = $('#scaleSlider');
+
+    slider1[0].oninput = function () {
+        let freq = Math.log(this.value) / 100
+
+        $('#svgFilter feTurbulence').attr('baseFrequency', freq)
+
+    }
+    slider2[0].oninput = function () {
+        let oct = this.value;
+
+        $('#svgFilter feTurbulence').attr('numOctaves', oct)
+    }
+    slider3[0].oninput = function () {
+        let scale = this.value;
+        $('#svgFilter feDisplacementMap').attr('scale', scale)
+    }
+
+    $('.shuffle').on('click', () => {
+        let hexArr = shiftColors();
+
+        let doodle = document.querySelector('css-doodle');
+
+        doodle.update(`:doodle { @grid: 50x1 / 100%; }
+        :container { animation: r 80s linear
+        infinite; }
+        @place-cell: center;
+        @size: 300% 6vmin;
+        transition: @r(.5s) ease;
+        background: @pd(`+ hexArr[0] + `, ` + hexArr[1] + `, ` + hexArr[2] + `);
+        transform-origin: 1vmin center;
+        transform: translateX(calc(@i * 2%)) rotate(calc(90deg));
+        @keyframes r { from{transform:translateX(-100%)}to {
+        transform: translateX(100%) } }`)
 
     })
 
