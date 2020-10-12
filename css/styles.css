@@ -56,8 +56,6 @@ header{
 .content.showing{
     transform: translateY(0%);
 }
-<<<<<<< Updated upstream
-=======
 .close{
     font-family: vag-rundschrift-d, sans-serif;
     font-weight: 400;
@@ -70,7 +68,6 @@ header{
     width: 100%;
 }
 
->>>>>>> Stashed changes
 .title{
     font-family: vag-rundschrift-d, sans-serif;
     font-weight: 400;
