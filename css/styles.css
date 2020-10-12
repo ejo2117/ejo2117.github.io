@@ -1,0 +1,71 @@
+body{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+header{
+
+    height: 45px;
+    width: 100%;
+    border-bottom: 5px solid black;
+    
+}
+.kilz{
+    width: 100%;
+    height: 100%;
+    max-width: 350px;
+}
+.copyright{
+    margin: auto;
+    width: 100%;
+    max-width: 240px;
+
+}
+.container{
+    height: calc(100% - 45px);
+    position: relative;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 0px;
+    transition: 0.25s ease linear;
+    transform: translateX(100%);
+}
+.menu.showing{
+    transform: translateX(0%);
+
+}
+.content{
+    background: white;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    position: absolute;
+    top: 0px;
+    transform: translateY(100%);
+
+}
+.content.showing{
+    transform: translateY(0%);
+}
+.title{
+    font-family: vag-rundschrift-d, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 42px;
+    height: 50px;
+    cursor: pointer;
+    
+}
+.title span{
+    transition: 0.25s ease linear;
+
+}
