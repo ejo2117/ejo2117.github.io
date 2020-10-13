@@ -170,17 +170,17 @@ $(() => {
     });
 
     //audio player
-
-    var sound = new Howl({
-        src: ['src/allubaby.wav'],
-        autoplay: true,
-        loop: true,
-        volume: 0.5,
-        onend: function () {
-            console.log('Finished!');
-        }
-    });
-
+    /*
+        var sound = new Howl({
+            src: ['src/allubaby.wav'],
+            autoplay: true,
+            loop: true,
+            volume: 0.5,
+            onend: function () {
+                console.log('Finished!');
+            }
+        });
+    */
 
 
     //content loaders
@@ -191,6 +191,12 @@ $(() => {
             if (content == "player") {
                 console.log('start visualizer')
                 //drawAudio('src/allubaby.wav');
+            } else if (content == "cube") {
+                console.log("start painting")
+                let interval = setInterval(() => { paintEdges() }, 5000)
+                $('.cube .close').on('click', function () {
+                    clearInterval(interval);
+                })
             }
             //sound.play();
             // wavesurfer.load('src/allubaby.wav')
@@ -229,18 +235,38 @@ $(() => {
 
         let doodle = document.querySelector('css-doodle');
 
-        doodle.update(`:doodle { @grid: 50x1 / 100%; }
+
+
+        doodle.update(`:doodle { @grid: 10x1 / 100%; }
         @place-cell: center;
-        @size: 300% 12vmin;
+        @size: 100% 10vmax;
         transition: @r(.5s) ease;
         background: @pd(`+ hexArr[0] + `, ` + hexArr[1] + `, ` + hexArr[2] + `);
-        transform-origin: 1vmin center;
-        transform: translateX(calc(@i * 6%)) rotate(calc(90deg));
-        @keyframes r { from{transform:translateX(-100%)}to {
+        transform-origin: 0vmin center;
+        transform: translateX(calc(@i * 10%)) rotate(calc(90deg));
+        @keyframes r { from{transform:translateX(0%)}to {
         transform: translateX(100%) } }`)
 
     })
 
+    let audioInterval;
+    let audioElement = $('audio')[0];
+    $('.play').on('click', () => {
+        audioElement.play()
+        $('.time .end').text(Math.floor(audioElement.duration))
+        audioInterval = setInterval(() => {
+            $('.time .position').text(Math.floor(audioElement.currentTime))
+            let playhead = (Math.floor(audioElement.duration) / 100) * (Math.floor(audioElement.currentTime))
+            $('.audio-controls input').attr('value', playhead)
+        }, 1000)
+        $('.play').css('display', 'none')
+        $('.pause').css('display', 'block')
+    })
+    $('.pause').on('click', () => {
+        $('audio')[0].pause()
+        $('.play').css('display', 'block')
+        $('.pause').css('display', 'none')
+    })
 
 
 })

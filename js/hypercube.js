@@ -2,7 +2,7 @@
 
 let t = 0.0;
 
-let scene, camera, renderer;
+let scene, camera, renderer, controls;
 let geometry, material;
 
 let edges = [];
@@ -12,7 +12,22 @@ let vertexJoins = [];
 
 init();
 render();
+function paintEdges() {
+    let hexArray = shiftColors();
+    edges.forEach((e, i) => {
+        console.log(e)
+        e.material.color.set(hexArray[i % 2])
+    })
+    scene.background = new THREE.Color(hexArray[2]);
 
+
+}
+function getControls(camera, renderer) {
+    var controls = new THREE.TrackballControls(camera, renderer.domElement);
+    controls.zoomSpeed = 0.4;
+    controls.panSpeed = 0.4;
+    return controls;
+}
 function path(p1, p2, p3, p4, i) {
 
     let vec = new THREE.Vector3(0, 0, 0);
@@ -77,6 +92,8 @@ function init() {
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     renderer = new THREE.WebGLRenderer();
+    controls = getControls(camera, renderer);
+
     renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
     document.getElementById('hypercube').appendChild(renderer.domElement);
 
@@ -87,7 +104,7 @@ function init() {
         geometry.vertices.push(vertexCoords[vertexJoins[i][1]]);
         let line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
             color: 0x22A7F0,
-            linewidth: 4
+            linewidth: 16
         }));
         scene.add(line);
         edges[i] = line;
@@ -96,8 +113,10 @@ function init() {
 
 }
 
+
+
 function render() {
-    t = (t + 0.002) % 1;
+    t = (t + 0.004) % 1;
 
     vertexCoords2[0] = path(vertexCoords[8], vertexCoords[9], vertexCoords[1], vertexCoords[0], t);
     vertexCoords2[1] = path(vertexCoords[0], vertexCoords[8], vertexCoords[9], vertexCoords[1], t);
@@ -132,4 +151,5 @@ function render() {
     }
 
     renderer.render(scene, camera);
+    controls.update();
 }

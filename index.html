@@ -85,6 +85,55 @@
         <source src="src/allubaby.wav" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
+      <div class="custom-audio">
+        <img class="audio-image" src="">
+
+        <div class="audio-controls">
+          <div class="info">
+            <span class="title"></span><span>/</span><span class="artist"></span>
+          </div>
+          <input type="range" min="1" max="100" value="1" class="slider" disabled></input>
+          <div class="time">
+            <span class="position"></span><span>/</span><span class="end"></span>
+          </div>
+          <div class="buttons">
+
+            <svg class="prev" width="37" height="31" viewBox="0 0 37 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path opacity="0.5"
+                d="M9.97426 17.1386C8.67525 16.3887 8.67525 14.5137 9.97426 13.7637L33.3565 0.263952C34.6555 -0.486034 36.2793 0.451451 36.2793 1.95142L36.2793 28.9509C36.2793 30.4509 34.6555 31.3884 33.3565 30.6384L9.97426 17.1386Z"
+                fill="black" />
+              <path
+                d="M0.97426 17.1386C-0.324754 16.3887 -0.324753 14.5137 0.974261 13.7637L24.3565 0.263952C25.6555 -0.486034 27.2793 0.451451 27.2793 1.95142L27.2793 28.9509C27.2793 30.4509 25.6555 31.3884 24.3565 30.6384L0.97426 17.1386Z"
+                fill="black" />
+            </svg>
+
+
+            <svg style="display: none" class="pause" width="28" height="31" viewBox="0 0 28 31" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect width="12" height="31" rx="6" fill="black" />
+              <rect x="16" width="12" height="31" rx="6" fill="black" />
+            </svg>
+
+            <svg class="play" width="28" height="31" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M26.305 13.7637C27.6041 14.5137 27.604 16.3887 26.305 17.1386L2.92279 30.6384C1.62377 31.3884 8.04123e-06 30.4509 8.04123e-06 28.9509L8.04123e-06 1.95143C8.04123e-06 0.451455 1.62378 -0.486026 2.92279 0.263959L26.305 13.7637Z"
+                fill="black" />
+            </svg>
+
+            <svg class="next" width="37" height="31" viewBox="0 0 37 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path opacity="0.5"
+                d="M9.97426 17.1386C8.67525 16.3887 8.67525 14.5137 9.97426 13.7637L33.3565 0.263952C34.6555 -0.486034 36.2793 0.451451 36.2793 1.95142L36.2793 28.9509C36.2793 30.4509 34.6555 31.3884 33.3565 30.6384L9.97426 17.1386Z"
+                fill="black" />
+              <path
+                d="M0.97426 17.1386C-0.324754 16.3887 -0.324753 14.5137 0.974261 13.7637L24.3565 0.263952C25.6555 -0.486034 27.2793 0.451451 27.2793 1.95142L27.2793 28.9509C27.2793 30.4509 25.6555 31.3884 24.3565 30.6384L0.97426 17.1386Z"
+                fill="black" />
+            </svg>
+
+
+          </div>
+
+        </div>
+      </div>
       <div class="close">x</div>
     </div>
     <div class="content doodle">
@@ -104,13 +153,13 @@
         </filter>
       </svg>
       <css-doodle>
-        :doodle { @grid: 50x1 / 100%; }
+        :doodle { @grid: 10x1 / 100%; }
         @place-cell: center;
-        @size: 300% 12vmin;
+        @size: 100% 10vmax;
         transition: @r(.5s) ease;
         background: @pd(#60569e, #e6437d, #ebbf4d);
-        transform-origin: 1vmin center;
-        transform: translateX(calc(@i * 6%)) rotate(calc(90deg));
+        transform-origin: 0vmin center;
+        transform: translateX(calc(@i * 10%)) rotate(calc(90deg));
         @keyframes r { from{transform:translateX(0%)}to {
         transform: translateX(100%) } }
       </css-doodle>
