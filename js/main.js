@@ -144,6 +144,13 @@ $(() => {
 
     })
 
+    $('.copyright').on('click', () => {
+        let hexArr = shiftColors();
+        $('.copyright ellipse').attr('fill', hexArr[0])
+        $('.copyright path').attr('fill', hexArr[1])
+
+
+    })
     //set up swipe listeners
     let panels = $('.menu');
     let view = 0;

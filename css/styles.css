@@ -201,6 +201,7 @@ header{
     margin: auto;
     width: 100%;
     max-width: 240px;
+    transition: 0.25s ease linear;
 
 }
 .container{
