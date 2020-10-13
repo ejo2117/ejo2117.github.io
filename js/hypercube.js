@@ -104,7 +104,7 @@ function init() {
         geometry.vertices.push(vertexCoords[vertexJoins[i][1]]);
         let line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
             color: 0x22A7F0,
-            linewidth: 8
+            linewidth: 4
         }));
         scene.add(line);
         edges[i] = line;
