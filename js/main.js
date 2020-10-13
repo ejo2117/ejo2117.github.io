@@ -157,11 +157,11 @@ $(() => {
 
     //content loaders
     $('.title').each((i, e) => {
-        $(e).on('click', () => {
+        $(e).on('click', async () => {
             let content = $(e).attr('data-content');
             $('.content.' + content).addClass('showing');
             if (content == "player") {
-                visualizeAudio('src/allubaby.wav');
+                await visualizeAudio('../src/allubaby.wav');
 
             }
             //sound.play();
