@@ -161,7 +161,9 @@ $(() => {
             let content = $(e).attr('data-content');
             $('.content.' + content).addClass('showing');
             if (content == "player") {
-                await visualizeAudio('../src/allubaby.wav');
+                console.log('start visualizer')
+                let response = await visualizeAudio('../src/allubaby.wav');
+                console.log(response)
 
             }
             //sound.play();
