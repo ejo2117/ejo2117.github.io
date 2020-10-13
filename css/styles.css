@@ -195,7 +195,7 @@ header{
 .kilz{
     width: 100%;
     height: 100%;
-    max-width: 350px;
+    max-width: 375px;
 }
 .copyright{
     margin: auto;
@@ -285,7 +285,14 @@ css-doodle {
         pointer-events: none;
       
   }
-
+#hypercube canvas{
+    width: 100% !important;
+    /* width: 100%; */
+    height: auto !important;
+    /* height: 100%; */
+    position: fixed;
+    z-index: -1;
+}
 .title{
     font-family: vag-rundschrift-d, sans-serif;
     font-weight: 400;

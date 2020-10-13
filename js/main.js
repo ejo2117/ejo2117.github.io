@@ -67,7 +67,7 @@ const normalizeData = filteredData => {
 
 const draw = normalizeData => {
     //set up canvas
-    const canvas = document.querySelector("canvas");
+    const canvas = document.querySelector("#waveform");
     const dpr = window.devicePixelRatio || 1;
     const padding = 20;
     canvas.width = canvas.offsetWidth * dpr;
@@ -75,8 +75,32 @@ const draw = normalizeData => {
     const ctx = canvas.getContext("2d");
     ctx.scale(dpr, dpr);
     ctx.translate(0, canvas.offsetHeight / 2 + padding);
+
+    //draw the line segments
+    const width = canvas.offsetWidth / normalizedData / length;
+    for (let i = 0; i < normalizedData.length; i++) {
+        const x = width * i;
+        let height = normalizedData[i] * canvas.offsetHeight - padding;
+        if (height < 0) {
+            height = 0;
+        } else if (height > canvas.offsetHeight / 2) {
+            height = height > canvas.offsetHeight / 2;
+        }
+        drawLineSegment(ctx, x, height, width, (i + 1) % 2);
+    }
 }
 
+const drawLineSegment = (ctx, x, y, width, isEven) => {
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#fff";
+    ctx.beginPath();
+    y = isEven ? y : -y;
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, y);
+    ctx.arc(x = width / 2, y, wdth / 2, Math.PI, Math.PI, isEven);
+    ctx.lineTo(x + width, 0);
+    ctx.stroke();
+}
 $(() => {
     //hover color shift
     $('.title').each((i, e) => {
@@ -136,6 +160,10 @@ $(() => {
         $(e).on('click', () => {
             let content = $(e).attr('data-content');
             $('.content.' + content).addClass('showing');
+            if (content == "player") {
+                visualizeAudio('src/allubaby.wav');
+
+            }
             //sound.play();
             // wavesurfer.load('src/allubaby.wav')
 
@@ -174,17 +202,17 @@ $(() => {
         let doodle = document.querySelector('css-doodle');
 
         doodle.update(`:doodle { @grid: 50x1 / 100%; }
-        :container { animation: r 80s linear
-        infinite; }
         @place-cell: center;
-        @size: 300% 6vmin;
+        @size: 300% 12vmin;
         transition: @r(.5s) ease;
         background: @pd(`+ hexArr[0] + `, ` + hexArr[1] + `, ` + hexArr[2] + `);
         transform-origin: 1vmin center;
-        transform: translateX(calc(@i * 2%)) rotate(calc(90deg));
+        transform: translateX(calc(@i * 6%)) rotate(calc(90deg));
         @keyframes r { from{transform:translateX(-100%)}to {
         transform: translateX(100%) } }`)
 
     })
+
+
 
 })
