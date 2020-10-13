@@ -253,7 +253,7 @@ header{
     flex-direction: column;
 }
 .content.player video{
-    height: 100%;
+    height: 500px;
     object-position: -375px;
     object-fit: cover;
 }
@@ -270,6 +270,7 @@ header{
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 162px;
 }
 .audio-controls{
     display: flex;

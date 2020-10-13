@@ -103,11 +103,9 @@ function init() {
         geometry.vertices.push(vertexCoords[vertexJoins[i][0]]);
         geometry.vertices.push(vertexCoords[vertexJoins[i][1]]);
 
-        const mergedGeometry = THREE.BufferGeometryUtils.mergeVertices(geometry);
-        mergedGeometry.computeVertexNormals();
 
 
-        let line = new THREE.Line(mergedGeometry, new THREE.LineBasicMaterial({
+        let line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
             color: 0x22A7F0,
             linewidth: 2
         }));
