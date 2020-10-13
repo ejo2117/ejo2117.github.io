@@ -247,7 +247,12 @@ header{
     margin: 25px;
 }
 #waveform{
+    background: black;
     width: 100%;
+    position: absolute;
+    /* bottom: -68px; */
+    margin-top: 117.81px;
+    height: calc(100% - 117.81px);
 }
 .controller{
     position: absolute;

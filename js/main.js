@@ -115,7 +115,7 @@ const draw = normalizedData => {
  * @param {boolean} isEven whether or not the segmented is even-numbered
  */
 const drawLineSegment = (ctx, x, height, width, isEven) => {
-    ctx.lineWidth = 1; // how thick the line is
+    ctx.lineWidth = 5; // how thick the line is
     ctx.strokeStyle = "#fff"; // what color our line is
     ctx.beginPath();
     height = isEven ? height : -height;
