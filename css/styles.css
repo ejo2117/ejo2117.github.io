@@ -248,6 +248,16 @@ header{
     cursor: pointer;
     margin: 25px;
 }
+.content.player{
+    display: flex;
+    flex-direction: column;
+}
+.content.player video{
+    height: 100%;
+    object-position: -375px;
+    object-fit: cover;
+}
+
 #waveform{
     display: none;
     width: 100%;
@@ -267,6 +277,10 @@ header{
     width: 100%;
     height: 100%;
 
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
 }
 .info{
     font-family: vag-rundschrift-d, sans-serif;

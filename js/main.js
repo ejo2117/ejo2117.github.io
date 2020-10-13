@@ -258,12 +258,22 @@ $(() => {
             $('.time .position').text(Math.floor(audioElement.currentTime))
             let playhead = (Math.floor(audioElement.duration) / 100) * (Math.floor(audioElement.currentTime))
             $('.audio-controls input').attr('value', playhead)
+
+            $('video').css('filter', 'hue-rotate(' + Math.floor(audioElement.currentTime) * 1.618 * 5 + 'deg)')
+            if ($('video')[0].currentTime >= $('video')[0].duration - 14) {
+                $('video')[0].currentTime = 25;
+            }
         }, 1000)
+        $('video')[0].currentTime = 25;
+
+        $('video')[0].play();
+        $('video')[0].playbackRate = 5.0;
         $('.play').css('display', 'none')
         $('.pause').css('display', 'block')
     })
     $('.pause').on('click', () => {
-        $('audio')[0].pause()
+        $('audio')[0].pause();
+        $('video')[0].pause();
         $('.play').css('display', 'block')
         $('.pause').css('display', 'none')
     })
