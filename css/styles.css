@@ -256,6 +256,7 @@ header{
     height: 500px;
     object-position: -375px;
     object-fit: cover;
+    pointer-events: none;
 }
 
 #waveform{
@@ -282,6 +283,7 @@ header{
 .buttons{
     display: flex;
     justify-content: space-between;
+    pointer-events: all;
 }
 .info{
     font-family: vag-rundschrift-d, sans-serif;
