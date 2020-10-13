@@ -163,11 +163,6 @@ $(() => {
     });
 
     //audio player
-    var wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: 'violet',
-        progressColor: 'purple'
-    });
 
     var sound = new Howl({
         src: ['src/allubaby.wav'],
@@ -188,7 +183,7 @@ $(() => {
             $('.content.' + content).addClass('showing');
             if (content == "player") {
                 console.log('start visualizer')
-                drawAudio('src/allubaby.wav');
+                //drawAudio('src/allubaby.wav');
             }
             //sound.play();
             // wavesurfer.load('src/allubaby.wav')
