@@ -162,7 +162,7 @@ $(() => {
             $('.content.' + content).addClass('showing');
             if (content == "player") {
                 console.log('start visualizer')
-                let response = await visualizeAudio('../src/allubaby.wav');
+                let response = await visualizeAudio('src/allubaby.wav');
                 console.log(response)
 
             }
